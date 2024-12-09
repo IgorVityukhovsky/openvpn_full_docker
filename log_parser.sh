@@ -1,10 +1,11 @@
 #!/bin/sh
 
 # Определяем интервал времени проверки в секундах
-CHECK_INTERVAL=5
-LOG_FILE="/tmp/openvpn-status.log"
-INSTANCE=$(hostname)
-METRIC_NAME="online"
+CHECK_INTERVAL=${CHECK_INTERVAL:-5}  # Если переменная окружения не задана, используется значение по умолчанию
+LOG_FILE="${LOG_FILE:-/tmp/openvpn-status.log}"  # Путь к файлу логов, по умолчанию /tmp/openvpn-status.log
+INSTANCE="${INSTANCE:-$(hostname)}"  # Имя хоста, по умолчанию берется с помощью hostname
+METRIC_NAME="${METRIC_NAME:-online}"  # Имя метрики, по умолчанию "online"
+PUSHGATEWAY_URL="${PUSHGATEWAY_URL:-http://pushgateway-prometheus-pushgateway:9091}"  # URL Pushgateway
 
 while true; do
   # Проверяем наличие файла
@@ -17,7 +18,7 @@ while true; do
     
     # Выводим результат
     echo "$RESULT"
-    echo "$METRIC_NAME $RESULT" | curl --data-binary @- "http://pushgateway-prometheus-pushgateway:9091/metrics/job/online_job/instance/$INSTANCE" 2>&1
+    echo "$METRIC_NAME $RESULT" | curl --data-binary @- "$PUSHGATEWAY_URL/metrics/job/online_job/instance/$INSTANCE" 2>&1
   else
     echo "Файл $LOG_FILE не найден."
   fi
