@@ -4,12 +4,6 @@ datasources:
   - name: Pushgateway
     type: prometheus
     access: proxy
-    url: http://igorvpn.ru:9091
-    editable: true
-
-  - name: Node Exporter
-    type: prometheus
-    access: proxy
-    url: http://igorvpn.ru:9100
+    url: http://localhost:9090
     editable: true
     isDefault: true
