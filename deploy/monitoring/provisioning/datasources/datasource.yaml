@@ -4,7 +4,7 @@ datasources:
   - name: Pushgateway
     type: prometheus
     access: proxy
-    url: http://igorvpn.ru:9091/metrics
+    url: http://igorvpn.ru:9091
     editable: true
 
   - name: Node Exporter
