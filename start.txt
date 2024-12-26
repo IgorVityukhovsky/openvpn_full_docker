@@ -62,6 +62,7 @@ sudo sh -c 'iptables-save > /etc/iptables/rules.v4'
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
+sudo chmod 666 /var/run/docker.sock
 
 
 #docker run -it -d -p 31194:1194/udp --cap-add=NET_ADMIN --restart=always --device=/dev/net/tun igorvit/openvpn:1.1 ovpn_run
