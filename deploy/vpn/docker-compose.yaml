@@ -4,10 +4,11 @@ services:
     command: ["ovpn_run"]
     cap_add:
       - NET_ADMIN
+    ports:
+      - "31194:1194/udp"
     network_mode: host
     volumes:
       - openvpn-status:/tmp
-    network_mode: host
 
   log-parser:
     image: igorvit/logparser:1.0
@@ -19,14 +20,14 @@ services:
     network_mode: host
     volumes:
       - openvpn-status:/tmp
-    network_mode: host
 
   pushgateway:
     image: prom/pushgateway:v1.9.0
     network_mode: host
+    ports:
+      - "9091:9091"
     volumes:
       - pushgateway-data:/tmp
-    network_mode: host
 
   node-exporter:
     image: prom/node-exporter:v1.6.0
@@ -36,9 +37,10 @@ services:
       - "--no-collector.filesystem"
       - "--no-collector.meminfo"
       - "--collector.netstat"
+    ports:
+      - "9100:9100"
     network_mode: host
     restart: always
-    network_mode: host
 
 volumes:
   openvpn-status:
