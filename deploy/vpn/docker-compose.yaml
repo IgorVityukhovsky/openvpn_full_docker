@@ -6,7 +6,6 @@ services:
       - NET_ADMIN
     ports:
       - "31194:1194/udp"
-    network_mode: host
     volumes:
       - openvpn-status:/tmp
 
@@ -23,9 +22,9 @@ services:
 
   pushgateway:
     image: prom/pushgateway:v1.9.0
-    network_mode: host
     ports:
       - "9091:9091"
+    network_mode: host
     volumes:
       - pushgateway-data:/tmp
 
@@ -39,7 +38,6 @@ services:
       - "--collector.netstat"
     ports:
       - "9100:9100"
-    network_mode: host
     restart: always
 
 volumes:
