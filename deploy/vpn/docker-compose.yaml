@@ -16,7 +16,6 @@ services:
       - CHECK_INTERVAL=5
       - LOG_FILE=/tmp/openvpn-status.log
       - PUSHGATEWAY_URL=http://pushgateway:9091
-    network_mode: host
     volumes:
       - openvpn-status:/tmp
 
@@ -24,7 +23,6 @@ services:
     image: prom/pushgateway:v1.9.0
     ports:
       - "9091:9091"
-    network_mode: host
     volumes:
       - pushgateway-data:/tmp
 
