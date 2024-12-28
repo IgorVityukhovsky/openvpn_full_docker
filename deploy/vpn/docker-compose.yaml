@@ -6,6 +6,8 @@ services:
       - NET_ADMIN
     ports:
       - "31194:1194/udp"
+    devices:
+      - /dev/net/tun:/dev/net/tun
     volumes:
       - openvpn-status:/tmp
 
