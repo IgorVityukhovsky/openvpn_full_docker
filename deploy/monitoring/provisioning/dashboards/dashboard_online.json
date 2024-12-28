@@ -206,7 +206,8 @@
                 "value": 180
               }
             ]
-          }
+          },
+          "unit": "Mbits"
         },
         "overrides": []
       },
@@ -304,7 +305,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "Mbits"
         },
         "overrides": []
       },
@@ -341,7 +343,7 @@
           "refId": "A"
         }
       ],
-      "title": "Входящий трафик в МБит",
+      "title": "Входящий трафик",
       "type": "timeseries"
     }
   ],
@@ -352,7 +354,7 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
