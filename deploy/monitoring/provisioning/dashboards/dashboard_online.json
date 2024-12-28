@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -79,7 +78,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "online{job=\"pushgateway\", exported_job=\"online_job\"}",
+          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"}",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -174,7 +173,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "online{job=\"pushgateway\", exported_job=\"online_job\"}",
+          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"}",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -183,6 +182,72 @@
       ],
       "title": "Online",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 180
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "10.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(node_network_receive_bytes_total{device!=\"lo\", instance=\"test.igorvpn.ru:9100\"}[1m]))",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Network",
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -269,7 +334,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(rate(node_network_receive_bytes_total{device!=\"lo\"}[1m]))",
+          "expr": "avg(rate(node_network_receive_bytes_total{device!=\"lo\", instance=\"test.igorvpn.ru:9100\"}[1m]))",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -287,12 +352,12 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Online",
+  "title": "Online TEST",
   "uid": "ed230fd5-6626-484b-a03f-3c849a727fa6",
   "version": 1,
   "weekStart": ""
