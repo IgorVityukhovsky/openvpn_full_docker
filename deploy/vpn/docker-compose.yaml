@@ -38,6 +38,7 @@ services:
       - "--collector.netstat"
     ports:
       - "9100:9100"
+    network_mode: host
     restart: always
 
 volumes:
