@@ -78,7 +78,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"} == 1\nand max_over_time(online{job=\"pushgateway-test\", exported_job=\"online_job\"}[1m]) == 1",
+          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"}\nand max_over_time(online{job=\"pushgateway-test\", exported_job=\"online_job\"}[1m])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -173,7 +173,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"} == 1\nand max_over_time(online{job=\"pushgateway-test\", exported_job=\"online_job\"}[1m]) == 1",
+          "expr": "online{job=\"pushgateway-test\", exported_job=\"online_job\"}\nand max_over_time(online{job=\"pushgateway-test\", exported_job=\"online_job\"}[1m])",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -240,7 +240,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "rate(node_network_receive_bytes_total{instance=\"test.igorvpn.ru:9100\",device=\"eth0\"}[5m]) * 8 / 1024 / 1024",
+          "expr": "rate(node_network_receive_bytes_total{instance=\"test.igorvpn.ru:9100\",device!~\"^(lo|docker0|br-.*|veth.*)$\"}[5m]) * 8 / 1024 / 1024",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -336,7 +336,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "rate(node_network_receive_bytes_total{instance=\"test.igorvpn.ru:9100\",device=\"eth0\"}[5m]) * 8 / 1024 / 1024",
+          "expr": "rate(node_network_receive_bytes_total{instance=\"test.igorvpn.ru:9100\",device!~\"^(lo|docker0|br-.*|veth.*)$\"}[5m]) * 8 / 1024 / 1024",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
